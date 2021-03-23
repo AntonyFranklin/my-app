@@ -11,6 +11,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { IValues } from "../models/IValues";
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -73,8 +74,6 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
     });
   };
 
-
-
   const handleEdit = () => {
     axios.put('https://localhost:44340/api/Students/UpdateStudent?id='+row.id, values).then((r)=>{
       props.onEdit(values);
@@ -83,7 +82,7 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="contained" color="primary" onClick={handleClickOpen} startIcon={<EditIcon />}>
         Edit
       </Button>
       <Dialog
@@ -96,8 +95,7 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
         <DialogContent>
           <TextField
             id="outlined-input"
-            name="name"
-           
+            name="name"           
             type="text"
             value={values.name}
             className={classes.formInput}
@@ -106,8 +104,7 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
           />
           <TextField
             id="outlined-input"
-            name="rollno"
-            
+            name="rollno"         
             type="text"
             value={values.rollno}
             className={classes.formInput}
@@ -116,8 +113,7 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
           />
           <TextField
             id="outlined-input"
-            name="class"
-            
+            name="class"        
             type="text"
             value={values.class}
             className={classes.formInput}
@@ -127,7 +123,6 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
           <TextField
             id="outlined-input"
             name="address"
-           
             type="text"
             value={values.address}
             className={classes.formInput}
@@ -144,7 +139,6 @@ const EditUser: React.FC<{ row: IValues, onEdit: (row:IValues) => void }> = (pro
           </Button>
         </DialogActions>
       </Dialog>
-
     </div>
   );
 }

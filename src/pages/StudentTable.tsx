@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -19,10 +19,18 @@ import { Link } from 'react-router-dom';
 import Delete from "../Components/DeleteUser";
 import Edit from "../Components/EditUser";
 
+const useStyles = makeStyles((theme: Theme) => 
+    createStyles({
+        grid:{
+            margin: theme.spacing(1)
+,        },
+    }),
+)
+
 const StudentTable = () => {
 
     const [student, setStudent] = useState<IValues[]>([]);
-
+    const classes = useStyles();
 
     useEffect(GetStudents(),[student])
 
@@ -52,8 +60,8 @@ const StudentTable = () => {
     return (
         <>
             <CssBaseline />
-            <Container maxWidth="xl" >
-                <Grid container spacing={3}>
+            <Container maxWidth="lg" style={{marginTop:'-5%'}}>
+                <Grid container spacing={3} className={classes.grid}>
                     <Grid item xs={3}>
 
                     </Grid>
@@ -69,15 +77,15 @@ const StudentTable = () => {
                 </Grid>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>ID</TableCell>
-                                <TableCell align="left">NAME</TableCell>
-                                <TableCell align="left">ROLL NO</TableCell>
-                                <TableCell align="left">CLASS</TableCell>
-                                <TableCell align="left">ADDRESS</TableCell>
-                                <TableCell align="left">ACTION</TableCell>
-                                <TableCell align="left">ACTION</TableCell>
+                        <TableHead style={{background:"black", color:"white"}}>
+                            <TableRow >
+                                <TableCell style={{color:'white'}}>ID</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>NAME</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>ROLL NO</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>CLASS</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>ADDRESS</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>ACTION</TableCell>
+                                <TableCell align="left" style={{color:'white'}}>ACTION</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

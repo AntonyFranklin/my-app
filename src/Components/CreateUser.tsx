@@ -9,6 +9,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import AddIcon from '@material-ui/icons/Add';
+import { setTokenSourceMapRange } from 'typescript';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
     },
     formInput: {
-      width: "100%"
+      width: "97%",
+      margin: theme.spacing(1),
     },
     button: {
       margin: theme.spacing(1),
@@ -75,11 +78,12 @@ const CreateUser: React.FC<{ onSave: () => void }> = (props) => {
   const handleSubmit = () => {
     axios.post(`https://localhost:44340/api/Students/PostStudent`, values);
     props.onSave();
+    alert("Data Saved Sucessfully");
   }
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="contained" color="secondary" startIcon={<AddIcon />} onClick={handleClickOpen} style={{borderRadius:"15px", fontSize:'15px'}}>
         Create Student
       </Button>
       <Dialog
@@ -88,7 +92,7 @@ const CreateUser: React.FC<{ onSave: () => void }> = (props) => {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{"Create Student"}</DialogTitle>
+        <DialogTitle id="responsive-dialog-title">{"CREATE STUDENT"}</DialogTitle>
         <DialogContent>
           <TextField
             id="outlined-input"

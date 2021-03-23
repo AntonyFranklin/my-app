@@ -8,6 +8,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { IValues } from '../models/IValues';
 import axios from 'axios';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const DeleteUser: React.FC<{ row: IValues, onDelete: () => void }> = (props) => {
     const { row } = props;
@@ -30,7 +31,7 @@ const DeleteUser: React.FC<{ row: IValues, onDelete: () => void }> = (props) => 
 
     return (
         <div>
-            <Button variant="contained" color="primary" onClick={handleClickOpen}>
+            <Button variant="contained" color="secondary" onClick={handleClickOpen} startIcon={<DeleteIcon />}>
                 Delete
       </Button>
             <Dialog
